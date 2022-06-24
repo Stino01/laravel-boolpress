@@ -12,7 +12,7 @@ class Article extends Model
         return $this->belongTo('App\Category');
     }
 
-    public function tag() {
-        return $this->belongToMany('App\Tag');
+    public function tags() {
+        return $this->belongsToMany('App\Tag');
     }
 }

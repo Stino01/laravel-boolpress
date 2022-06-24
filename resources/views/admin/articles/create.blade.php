@@ -29,7 +29,7 @@
         <div class="form-check mb-3">
             @foreach ($tags as $tag)
               <div class="form-check-inline">
-                <input type="checkbox" class="form-check-input" id="{{$tag->slug}}" name="tags" value="{{$tag->id}}" {{in_array($tag->id, old("tags", [])) ? 'checked' : ''}}>
+                <input type="checkbox" class="form-check-input" id="{{$tag->slug}}" name="tags[]" value="{{$tag->id}}" {{in_array($tag->id, old("tags", [])) ? 'checked' : ''}}>
                 <label for="{{$tag->slug}}" class="form-check-label">{{$tag->name}}</label>
               </div>
             @endforeach

@@ -50,10 +50,13 @@ class ArticleController extends Controller
         $newArticle->content = $data['content'];
         $newArticle->published = isset($data['published']);
         $newArticle->category_id = $data['category_id'];
-        
         $newArticle->slug = $this->getSlug($newArticle->title);
-
         $newArticle->save();
+
+        if(isset($data['tags'])){
+            $newArticle->tags()->sync($data['tags']);        
+        }
+
         return redirect()->route('admin.articles.show', $newArticle->id);
     }
 
