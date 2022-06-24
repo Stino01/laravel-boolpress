@@ -79,8 +79,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.articles.edit', compact('article', 'categories'));
+        return view('admin.articles.edit', compact('article', 'categories', 'tags'));
     }
 
     /**
@@ -107,8 +108,11 @@ class ArticleController extends Controller
         $article->content = $data['content'];
         $article->published = isset($data['published']);
         $article->category_id = $data['category_id'];
-
         $article->update();
+
+        if(isset($data['tags'])){
+            $article->tags()->sync($data['tags']);        
+        }
         return redirect()->route('admin.articles.show', $article->id);
     }
 

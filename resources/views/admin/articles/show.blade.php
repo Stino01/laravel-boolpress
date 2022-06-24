@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1 class="text-center">SHOW</h1>
+<h1 class="text-center">SHOW</h1>
+<div class="container d-flex justify-content-center">
     <div class="card d-flex flex-column justify-content-center align-item-center p-4 col-6">
         <h1 class="text-center">{{$article->title}}</h1>
         <p class="text-center"><small>{{$article->author}}</small></p>
