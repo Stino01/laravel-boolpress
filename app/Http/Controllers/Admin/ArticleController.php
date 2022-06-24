@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Article;
 use App\Category;
+use App\Tag;
 
 class ArticleController extends Controller
 {
@@ -28,8 +29,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.articles.create', compact('categories'));
+        return view('admin.articles.create', compact('categories', 'tags'));
     }
 
     /**
