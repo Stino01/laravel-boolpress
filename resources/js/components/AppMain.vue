@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1 class="text-center">{{titolo}}</h1>
-        <h2 class="text-center">{{sottotitolo}}</h2>
+        <h1 class="text-center">Home</h1>
         <ul>
             <li v-for="article in articles" :key="article.id">
                 {{article.title}}
@@ -11,19 +10,19 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "AppMain",
     data() {
         return {
-            posts: [],
-            titolo: "Work in progress",
-            sottotitolo: "lavori in corso",
+            articles: [],
         };
     },
     created() {
         axios.get('/api/articles').then((response)=>{
-            console.log(response.data);
-            this.articles = response.data;
+            //console.log(response);
+            this.articles = response.data
         })
     }
 }
