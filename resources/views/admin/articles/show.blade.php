@@ -5,6 +5,7 @@
 <div class="container d-flex justify-content-center">
     <div class="card d-flex flex-column justify-content-center align-item-center p-4 col-6">
         <h1 class="text-center">{{$article->title}}</h1>
+        <img src="{{ asset('storage/' . $article->image)}}" alt="">
         <p class="text-center"><small>{{$article->author}}</small></p>
         <p class="text-center"><small>{{$article->slug}}</small></p>
         <p class="m-5 text-center">{{$article->content}}</p>

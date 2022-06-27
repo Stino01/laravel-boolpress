@@ -14,10 +14,7 @@ class UpdateArticlesTable extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->foreignId('category_id')
-                ->nullable()
-                ->constrained()
-                ->onDelete('set null');
+            $table->string("image")->nullable();
         });
     }
 
@@ -29,8 +26,7 @@ class UpdateArticlesTable extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
-            $table->dropColumn("category_id");
+            $table->dropColumn("image");
         });
     }
 }

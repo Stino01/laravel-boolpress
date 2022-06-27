@@ -11,6 +11,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Creation Date</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>

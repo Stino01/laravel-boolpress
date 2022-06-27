@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Article;
 use App\Category;
@@ -51,6 +52,12 @@ class ArticleController extends Controller
         $newArticle->published = isset($data['published']);
         $newArticle->category_id = $data['category_id'];
         $newArticle->slug = $this->getSlug($newArticle->title);
+        
+        if( isset($data['image']) ) {
+            $path_image = Storage::put("uploads", $data['image']);
+            $newArticle->image = $path_image;
+        }
+
         $newArticle->save();
 
         if(isset($data['tags'])){

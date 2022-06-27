@@ -102,13 +102,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AppMain",
   data: function data() {
     return {
+      posts: [],
       titolo: "Work in progress",
       sottotitolo: "lavori in corso"
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/articles').then(function (response) {
+      console.log(response.data);
+      _this.articles = response.data;
+    });
   }
 });
 
@@ -627,6 +641,16 @@ var render = function () {
     _c("h1", { staticClass: "text-center" }, [_vm._v(_vm._s(_vm.titolo))]),
     _vm._v(" "),
     _c("h2", { staticClass: "text-center" }, [_vm._v(_vm._s(_vm.sottotitolo))]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.articles, function (article) {
+        return _c("li", { key: article.id }, [
+          _vm._v("\n            " + _vm._s(article.title) + "\n        "),
+        ])
+      }),
+      0
+    ),
   ])
 }
 var staticRenderFns = []

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1 class="text-center">CREATE</h1>
-    <form action="{{route('admin.articles.store')}}" method="post" class="p-5">
+    <form action="{{route('admin.articles.store')}}" method="post" enctype="multipart/form-data" class="p-5">
         @csrf
 
         <div class="mb-3">
@@ -19,6 +19,11 @@
         <div class="mb-3">
         <label for="content" class="form-label">Content</label>
         <textarea class="form-control" id="content" name="content" placeholder="Inserisci il contenuto">{{old('content')}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Aggiungi immagine</label>
+            <input type="file" id="image" name="image">
         </div>
 
         <div class="form-check mb-3">
